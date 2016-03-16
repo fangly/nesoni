@@ -325,7 +325,7 @@ def sort_bam(in_filename, out_prefix, by_name=False, cores=8):
     io.execute(
         [ 'samtools', 'sort', '-@', '%d' % cores, '-m', '%dM' % megs ] +
         ([ '-n' ] if by_name else [ ]) +
-        [ in_filename, out_prefix ], cores=cores)
+        [ in_filename, '-o', out_prefix + '.bam' ], cores=cores)
 
 def sort_and_index_bam(in_filename, out_prefix, cores=8):
     sort_bam(in_filename, out_prefix, cores=cores)
